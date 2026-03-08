@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Twitter } from "lucide-react";
 
 const MagneticButton = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const ref = useRef<HTMLButtonElement>(null);
@@ -70,8 +70,35 @@ const ContactFooter = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-20 pt-8 border-t border-border/50"
+          transition={{ delay: 0.4 }}
+          className="mt-16 flex justify-center gap-4"
+        >
+          {[
+            { icon: Github, href: "#", label: "GitHub" },
+            { icon: Linkedin, href: "#", label: "LinkedIn" },
+            { icon: Twitter, href: "#", label: "Twitter" },
+          ].map(({ icon: Icon, href, label }) => (
+            <motion.a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              whileHover={{ scale: 1.15, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className="glass-elevated rounded-full p-4 text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors duration-300"
+            >
+              <Icon className="w-5 h-5" />
+            </motion.a>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="mt-12 pt-8 border-t border-border/50"
         >
           <p className="text-xs font-mono text-muted-foreground tracking-wider">
             © 2026 Elsuraj · Master Product Architect · All systems operational
