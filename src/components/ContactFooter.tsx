@@ -1,8 +1,10 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Linkedin, Twitter } from "lucide-react";
+import ContactDrawer from "@/components/ContactDrawer";
 
-const MagneticButton = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+const MagneticButton = ({ children, className = "", onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) => {
+
   const ref = useRef<HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -19,10 +21,12 @@ const MagneticButton = ({ children, className = "" }: { children: React.ReactNod
   return (
     <motion.button
       ref={ref}
+      onClick={onClick}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+
       className={className}
     >
       {children}
@@ -31,8 +35,10 @@ const MagneticButton = ({ children, className = "" }: { children: React.ReactNod
 };
 
 const ContactFooter = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <section id="contact" className="py-32 px-6 relative">
+
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] rounded-full bg-primary/5 blur-[150px]" />
       </div>
@@ -60,7 +66,7 @@ const ContactFooter = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <MagneticButton className="group relative inline-flex items-center gap-3 bg-primary text-primary-foreground font-display font-bold text-lg px-12 py-5 rounded-full glow-primary transition-all hover:scale-[1.02]">
+          <MagneticButton onClick={() => setDrawerOpen(true)} className="group relative inline-flex items-center gap-3 bg-primary text-primary-foreground font-display font-bold text-lg px-12 py-5 rounded-full glow-primary transition-all hover:scale-[1.02]">
             Get in Touch
             <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </MagneticButton>
@@ -105,7 +111,10 @@ const ContactFooter = () => {
           </p>
         </motion.div>
       </div>
+
+      <ContactDrawer open={drawerOpen} onOpenChange={setDrawerOpen} />
     </section>
+
   );
 };
 

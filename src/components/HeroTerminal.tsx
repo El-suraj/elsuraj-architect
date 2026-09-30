@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
+import HeroStatusBar from "@/components/HeroStatusBar";
+
 
 const phrases = [
   "Debugging the Idea",
@@ -58,6 +60,10 @@ const HeroTerminal = () => {
             <span className="text-gradient">Elsuraj</span>
           </h1>
         </motion.div>
+
+        <HeroStatusBar />
+
+
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
