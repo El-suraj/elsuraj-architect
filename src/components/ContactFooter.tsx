@@ -35,8 +35,10 @@ const MagneticButton = ({ children, className = "", onClick }: { children: React
 };
 
 const ContactFooter = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <section id="contact" className="py-32 px-6 relative">
+
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] rounded-full bg-primary/5 blur-[150px]" />
       </div>
