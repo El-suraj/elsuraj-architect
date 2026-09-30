@@ -111,7 +111,10 @@ const ContactFooter = () => {
           </p>
         </motion.div>
       </div>
+
+      <ContactDrawer open={drawerOpen} onOpenChange={setDrawerOpen} />
     </section>
+
   );
 };
 
