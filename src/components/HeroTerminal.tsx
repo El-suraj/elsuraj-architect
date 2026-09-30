@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
+import HeroStatusBar from "@/components/HeroStatusBar";
+
 
 const phrases = [
   "Debugging the Idea",
