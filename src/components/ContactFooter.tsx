@@ -66,7 +66,7 @@ const ContactFooter = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <MagneticButton className="group relative inline-flex items-center gap-3 bg-primary text-primary-foreground font-display font-bold text-lg px-12 py-5 rounded-full glow-primary transition-all hover:scale-[1.02]">
+          <MagneticButton onClick={() => setDrawerOpen(true)} className="group relative inline-flex items-center gap-3 bg-primary text-primary-foreground font-display font-bold text-lg px-12 py-5 rounded-full glow-primary transition-all hover:scale-[1.02]">
             Get in Touch
             <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </MagneticButton>
