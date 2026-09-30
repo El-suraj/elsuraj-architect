@@ -1,8 +1,10 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Linkedin, Twitter } from "lucide-react";
+import ContactDrawer from "@/components/ContactDrawer";
 
-const MagneticButton = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+const MagneticButton = ({ children, className = "", onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) => {
+
   const ref = useRef<HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
